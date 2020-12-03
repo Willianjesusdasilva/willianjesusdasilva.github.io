@@ -95,7 +95,44 @@ body {
 
 #side-bar{
     margin-top: 30px;
+
 }
 hr.rounded {
     border-top: 1px solid #333;
+}
+
+#side-bar-ul{
+    overflow-y: auto; 
+    height:60%;
+}
+
+.scrollbar
+{
+	margin-left: 30px;
+	float: left;
+	height: 300px;
+	width: 215px;
+	background: ;
+	overflow-y: scroll;
+	margin-bottom: 25px;
+}
+
+#side-bar-ul::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+#side-bar-ul::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+#side-bar-ul::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
 }

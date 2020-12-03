@@ -20,8 +20,9 @@
   def on_complete(req):
       profile_data = json.loads(req.text)
       document['side-bar'] <= html.IMG(src=profile_data['avatar_url'], Class='img-circle', id='profile-img')
-      document['side-bar'] <= html.H4(profile_data['name'])
-      document['side-bar'] <= html.SPAN(profile_data['bio'])
+      document['side-bar'] <= html.H4(profile_data['name'], id='text-profile-name')
+      document['side-bar'] <= html.H6(profile_data['bio'], id='text-profile-bio')
+      document['side-bar'] <= html.H6('Desenvolvedor na '+profile_data['company'], id='text-profile-company')
   
   def request_data_profile():
       req = ajax.Ajax()

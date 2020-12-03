@@ -4,7 +4,7 @@ html, body {
     height: 100%;
 }
 body {
-    background: #000;
+    background: #333;
     padding: 0;
     margin: 0;
     font-family: 'Varela Round', sans-serif;
@@ -64,12 +64,35 @@ body {
     text-decoration: none;
 }
 
-.img-circle{
+#profile-img{
     width: 200px;
-    aling: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-bottom:30px;
 }
 
-#personal-data{
-    width: 150px;
+#text-profile-name{
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    font-weight: bold;
+}
+#text-profile-bio{
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+#text-profile-company{
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    font-weight: bold;
 }
 
+#side-bar{
+    margin-top: 30px;
+}

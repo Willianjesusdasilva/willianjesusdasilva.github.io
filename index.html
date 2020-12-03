@@ -20,7 +20,7 @@
   def on_complete_post(req_post):
     profile_data = json.loads(req_post.text)
     for i in profile_data.keys():
-      document['list-side-bar'] <= html.LI(html.A(i))
+      document['list-side-bar'] <= html.LI(html.A(i, id=i))
 
   def on_complete(req):
       profile_data = json.loads(req.text)

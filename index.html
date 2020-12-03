@@ -17,6 +17,11 @@
   from browser import document, ajax, html
   import json
 
+  def on_complete_post(req_post):
+    profile_data = json.loads(req_post.text)
+    for i in profile_data.keys():
+      document['list-side-bar'] <= html.LI(html.A(i))
+
   def on_complete(req):
       profile_data = json.loads(req.text)
       document['side-bar'] <= html.IMG(src=profile_data['avatar_url'], Class='img-circle', id='profile-img')
@@ -31,20 +36,24 @@
       req.set_header('content-type', 'application/x-www-form-urlencoded')
       req.send()
   
+  def request_data_post():
+      req_post = ajax.Ajax()
+      req_post.bind('complete', on_complete_post)
+      req_post.open('GET', 'https://willianjesusdasilva.github.io/assets/src/data.json', True)
+      req_post.set_header('content-type', 'application/x-www-form-urlencoded')
+      req_post.send()
+
   request_data_profile()
+  request_data_post()
   
 
 </script>
-<body>
+<body onload="brython()" id='body'>
   <div id="sidebarMenu">
     <div class="sidebarMenuInner" id ='side-bar'>
     </div>
     <hr class="rounded">
     <ul class="sidebarMenuInner" id='list-side-bar'>
-      <li><a href="https://vanila.io" target="_blank">HOME</a></li>
-      <li><a href="#" target="_blank">Desarrollo Web</a></li>
-      <li><a href="#" target="_blank">Contactanos</a></li>
-      <li><a href="#" target="_blank">Clientes</a></li>
     </ul>
   </div>
   <div id='center' class="main center">

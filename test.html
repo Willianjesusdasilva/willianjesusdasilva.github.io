@@ -1,60 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900"
-      rel="stylesheet"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.8.10/brython.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.8.10/brython_stdlib.min.js"></script>
+<!doctype html>
+<html>
 
-
-
-
-    <title>Reflux HTML CSS Template</title>
-<!--
-Reflux Template
-https://templatemo.com/tm-531-reflux
--->
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-
-    <!-- Additional CSS Files -->
+<head>
+    <meta charset="utf-8">
     <link rel="stylesheet" href="assets/css/fontawesome.css" />
     <link rel="stylesheet" href="assets/css/templatemo-style.css" />
     <link rel="stylesheet" href="assets/css/owl.css" />
     <link rel="stylesheet" href="assets/css/lightbox.css" />
-  </head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.8.10/brython.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.8.10/brython_stdlib.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
 
-  <body onload="brython()">
+<body onload="brython()">
 
 <script type="text/python">
-  from browser import document, ajax, html
-  import json
+from browser import document, ajax, html
+import json
 
-  def on_complete(req):
-      profile_data = json.loads(req.text)
-      document['avatar_url'] <= html.IMG(src=profile_data['avatar_url'])
-      document['pessoa'] <= html.H4(profile_data['name'])
-      document['pessoa'] <= html.SPAN(profile_data['bio'])
-  
-  def request_data_profile():
-      req = ajax.Ajax()
-      req.bind('complete', on_complete)
-      req.open('GET', 'https://api.github.com/users/Willianjesusdasilva', True)
-      req.set_header('content-type', 'application/x-www-form-urlencoded')
-      req.send()
-  
-  request_data_profile()
-  
-  </script>
+def gen_page_extruct():
+    document <= html.DIV(Class="container-md", id='button-top', style={'background-color':'#24292e', 'height':'90px'})
+
+def on_complete(req):
+    profile_data = json.loads(req.text)
+    document['avatar_url'] <= html.IMG(src=profile_data['avatar_url'])
+
+def request_data_profile():
+    req = ajax.Ajax()
+    req.bind('complete', on_complete)
+    req.open('GET', 'https://api.github.com/users/Willianjesusdasilva', True)
+    req.set_header('content-type', 'application/x-www-form-urlencoded')
+    req.send()
+
+request_data_profile()
+
+</script>
+<body>
     <div id="page-wraper">
       <!-- Sidebar Menu -->
       <div class="responsive-nav">
@@ -63,10 +46,11 @@ https://templatemo.com/tm-531-reflux
           <i class="fa fa-times" id="menu-close"></i>
           <div class="container">
             <div class="image">
-              <a id="avatar_url"></a>
+              <a id='avatar_url'></a>
             </div>
-            <div class="author-content" id="pessoa" >
-
+            <div class="author-content">
+              <h4>Reflux Me</h4>
+              <span>Web Designer</span>
             </div>
             <nav class="main-nav" role="navigation">
               <ul class="main-menu">
@@ -96,6 +80,9 @@ https://templatemo.com/tm-531-reflux
                   <a href="#"><i class="fa fa-rss"></i></a>
                 </li>
               </ul>
+            </div>
+            <div class="copyright-text">
+              <p>Copyright 2019 Reflux Design</p>
             </div>
           </div>
         </div>
@@ -470,64 +457,7 @@ https://templatemo.com/tm-531-reflux
       </section>
     </div>
 
-    <!-- Scripts -->
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <script src="assets/js/isotope.min.js"></script>
-    <script src="assets/js/owl-carousel.js"></script>
-    <script src="assets/js/lightbox.js"></script>
-    <script src="assets/js/custom.js"></script>
-    <script>
-      //according to loftblog tut
-      $(".main-menu li:first").addClass("active");
+</body>
 
-      var showSection = function showSection(section, isAnimate) {
-        var direction = section.replace(/#/, ""),
-          reqSection = $(".section").filter(
-            '[data-section="' + direction + '"]'
-          ),
-          reqSectionPos = reqSection.offset().top - 0;
-
-        if (isAnimate) {
-          $("body, html").animate(
-            {
-              scrollTop: reqSectionPos
-            },
-            800
-          );
-        } else {
-          $("body, html").scrollTop(reqSectionPos);
-        }
-      };
-
-      var checkSection = function checkSection() {
-        $(".section").each(function() {
-          var $this = $(this),
-            topEdge = $this.offset().top - 80,
-            bottomEdge = topEdge + $this.height(),
-            wScroll = $(window).scrollTop();
-          if (topEdge < wScroll && bottomEdge > wScroll) {
-            var currentId = $this.data("section"),
-              reqLink = $("a").filter("[href*=\\#" + currentId + "]");
-            reqLink
-              .closest("li")
-              .addClass("active")
-              .siblings()
-              .removeClass("active");
-          }
-        });
-      };
-
-      $(".main-menu").on("click", "a", function(e) {
-        e.preventDefault();
-        showSection($(this).attr("href"), true);
-      });
-
-      $(window).scroll(function() {
-        checkSection();
-      });
-    </script>
-  </body>
 </html>

@@ -47,7 +47,7 @@ body {
     color: #000;
     text-transform: uppercase;
     font-weight: bold;
-    padding: 20px;
+    padding: 14px;
     cursor: pointer;
     border-bottom: 1px solid rgba(255, 255, 255, 0.10);
 }
@@ -95,4 +95,7 @@ body {
 
 #side-bar{
     margin-top: 30px;
+}
+hr.rounded {
+    border-top: 1px solid #333;
 }

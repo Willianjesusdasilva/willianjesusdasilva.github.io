@@ -3,20 +3,22 @@
 
 <head>
     <meta charset="utf-8">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.8.10/brython.min.js">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.8.10/brython_stdlib.min.js">
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.8.10/brython.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.8.10/brython_stdlib.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body onload="brython()">
 
 <script type="text/python">
-
-from browser import document, ajax
+from browser import document, ajax, html
+import json
 
 def on_complete(req):
-   document <= req.text
+    profile_data = json.loads(req.text)
+    document <= html.IMG(src=profile_data['avatar_url'], height=150, id='Image', Class='img-circle')
 
 req = ajax.Ajax()
 req.bind('complete', on_complete)

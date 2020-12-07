@@ -17,10 +17,19 @@
   from browser import document, ajax, html
   import json
 
+  json_global = {}
+
+  def action(event):
+    global json_global
+    element = event.target
+    document['center'] <= json_global['element.text']
+
   def on_complete_post(req_post):
+    global json_global
     profile_data = json.loads(req_post.text)
+    json_global = json.dumps(req_post.text)
     for i in profile_data.keys():
-      document['list-side-bar'] <= html.LI(html.A(i, id=i))
+      document['list-side-bar'] <= html.LI(html.A(i).bind("click", action))
 
   def on_complete(req):
       profile_data = json.loads(req.text)

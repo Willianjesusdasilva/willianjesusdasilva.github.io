@@ -1,4 +1,5 @@
 <!doctype html>
+<<<<<<< HEAD
 <html lang="pt-BR">
 <head>
     <meta charset="utf-8">
@@ -38,3 +39,76 @@
     </main>
 </body>
 </html>
+=======
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="assets/js/brython.js"></script>
+    <script type="text/javascript" src="assets/js/brython_modules.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/minimal.css" />
+</head>
+
+<body onload="brython()">
+
+<script type="text/python">
+  from browser import document, ajax, html
+  import json
+
+  json_global = {}
+
+  def action(event):
+    global json_global
+    element = event.target
+    document['center'] <= json_global['element.text']
+
+  def on_complete_post(req_post):
+    global json_global
+    profile_data = json.loads(req_post.text)
+    json_global = json.dumps(req_post.text)
+    for i in profile_data.keys():
+      document['list-side-bar'] <= html.LI(html.A(i).bind("click", action))
+
+  def on_complete(req):
+      profile_data = json.loads(req.text)
+      document['side-bar'] <= html.IMG(src=profile_data['avatar_url'], Class='img-circle', id='profile-img')
+      document['side-bar'] <= html.H4(profile_data['name'], id='text-profile-name')
+      document['side-bar'] <= html.H6(profile_data['bio'], id='text-profile-bio')
+      document['side-bar'] <= html.H6('Desenvolvedor na '+profile_data['company'], id='text-profile-company')
+  
+  def request_data_profile():
+      req = ajax.Ajax()
+      req.bind('complete', on_complete)
+      req.open('GET', 'https://api.github.com/users/Willianjesusdasilva', True)
+      req.set_header('content-type', 'application/x-www-form-urlencoded')
+      req.send()
+  
+  def request_data_post():
+      req_post = ajax.Ajax()
+      req_post.bind('complete', on_complete_post)
+      req_post.open('GET', 'https://willianjesusdasilva.github.io/assets/src/data.json', True)
+      req_post.set_header('content-type', 'application/x-www-form-urlencoded')
+      req_post.send()
+
+  request_data_profile()
+  request_data_post()
+  
+
+</script>
+<body onload="brython()" id='body'>
+  <div id="sidebarMenu">
+    <div class="sidebarMenuInner" id ='side-bar'>
+    </div>
+    <hr class="rounded">
+    <div class="scrollbar" id='side-bar-ul'>
+    <ul class="sidebarMenuInner" id='list-side-bar'>
+    </ul>
+  </div>
+  </div>
+  <div id='center' class="main center">
+  </div>
+</html>
+>>>>>>> 36cc82f037a1dd1052a22b9db54f048b20dbaf25

@@ -1,55 +1,40 @@
-# Presenter de ideias Markdown
+# Idea Presenter · PyScript
 
-O site é apenas um apresentador. Não existe editor e não existe banco ou arquivo JSON central.
+Apresentador de ideias em Markdown para GitHub Pages.
 
-## Como adicionar uma ideia
+## O que mudou
 
-Crie um arquivo `.md` dentro de `ideas/`.
+- Brython saiu da aplicação.
+- A lógica de listagem, busca, leitura do JSON inicial e navegação está em `assets/py/app.py` usando PyScript.
+- Foto, nome, bio e empresa continuam vindo automaticamente do perfil público do GitHub.
+- Os `.md` são descobertos automaticamente na pasta `ideas/` pela API pública do GitHub.
+- Não existe `ideas.json`, backend ou build.
+- Markdown é renderizado com `marked.js` e sanitizado com `DOMPurify`.
 
-Todo arquivo deve começar com um JSON válido:
+## Formato de uma ideia
 
-```text
+```md
 {
-  "nome": "Bico suplementar para o A3",
-  "tags": ["a3", "esp32", "injeção"],
-  "status": "pesquisando"
+  "nome": "Minha ideia",
+  "tags": ["python", "automotivo"],
+  "status": "ideia"
 }
 
-# Bico suplementar para o A3
+# Minha ideia
 
-Conteúdo da ideia em Markdown...
+Conteúdo aqui.
 ```
 
-Campos esperados:
+## Aplicar no repositório
 
-- `nome`: obrigatório, string.
-- `tags`: lista de strings.
-- `status`: string; se omitido, será `ideia`.
+Copie o conteúdo do ZIP por cima do repositório. A pasta `ideas/` que você já tem pode permanecer normalmente.
 
-## Descoberta automática
+Depois rode:
 
-`assets/js/app.js` consulta em tempo de execução:
-
-`GET /repos/Willianjesusdasilva/willianjesusdasilva.github.io/contents/ideas?ref=master`
-
-Como o repositório é público, não é necessário token.
-
-Depois ele baixa cada `.md`, separa o JSON inicial e renderiza o restante usando `marked`. O HTML gerado passa por `DOMPurify` antes de ser exibido.
-
-Portanto, para publicar uma nova ideia basta adicionar o `.md` à pasta `ideas/` e fazer push.
-
-## Estrutura
-
-```text
-index.html
-ideas/
-  exemplo.md
-assets/
-  css/
-    minimal.css
-    presenter.css
-  js/
-    app.js
+```powershell
+git add .
+git commit -m "Migra apresentador de ideias para PyScript"
+git push origin master
 ```
 
-O `minimal.css` mantém o estilo original do site. `presenter.css` contém apenas os complementos necessários para lista, metadados e Markdown.
+Os arquivos antigos do Brython não são mais referenciados. Se quiser removê-los, execute `cleanup-brython.ps1`.

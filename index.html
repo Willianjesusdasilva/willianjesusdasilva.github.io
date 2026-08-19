@@ -1,41 +1,80 @@
 <!doctype html>
-<<<<<<< HEAD
 <html lang="pt-BR">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Willian Jesus da Silva</title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/minimal.css">
-    <link rel="stylesheet" href="assets/css/presenter.css">
-
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
-    <script defer src="assets/js/app.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101214">
+  <title>Willian Jesus da Silva · Ideias</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://pyscript.net/releases/2026.7.2/core.css">
+  <link rel="stylesheet" href="assets/css/app.css">
+  <script type="module" src="https://pyscript.net/releases/2026.7.2/core.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
 </head>
 <body>
-    <div id="sidebarMenu">
-        <div class="sidebarMenuInner" id="side-bar">
-            <div class="profile-loading">Carregando...</div>
-        </div>
+  <button id="menu-button" class="menu-button" type="button" aria-label="Abrir menu">☰</button>
+  <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
 
-        <hr class="rounded">
+  <aside id="sidebar" class="sidebar">
+    <section id="profile" class="profile">
+      <div class="profile-skeleton">
+        <div class="avatar-skeleton"></div>
+        <div class="line-skeleton wide"></div>
+        <div class="line-skeleton"></div>
+      </div>
+    </section>
+    <div class="sidebar-divider"></div>
+    <section class="ideas-panel">
+      <div class="ideas-heading">
+        <div><span class="eyebrow">ARQUIVO</span><h2>Ideias</h2></div>
+        <span id="idea-count" class="idea-count">0</span>
+      </div>
+      <label class="search-box" for="search">
+        <span>⌕</span>
+        <input id="search" type="search" placeholder="Buscar nome, tag ou status..." autocomplete="off">
+      </label>
+      <div id="status-filters" class="status-filters"></div>
+      <div id="idea-list" class="idea-list" aria-live="polite">
+        <div class="list-loading">Buscando arquivos Markdown...</div>
+      </div>
+    </section>
+  </aside>
 
-        <div id="idea-filters">
-            <input id="search" type="search" placeholder="Buscar..." autocomplete="off">
-        </div>
-
-        <div class="scrollbar" id="side-bar-ul">
-            <ul class="sidebarMenuInner" id="list-side-bar"></ul>
-        </div>
+  <main class="content-shell">
+    <div class="content-topbar">
+      <span class="brand-mark">W.</span>
+      <span id="current-path" class="current-path">ideas/</span>
+      <a class="github-link" href="https://github.com/Willianjesusdasilva/willianjesusdasilva.github.io" target="_blank" rel="noreferrer">GitHub ↗</a>
     </div>
 
-    <main id="center" class="main center">
-        <div id="empty-state">
-            <h2>Ideias</h2>
-            <p>Selecione uma ideia no menu.</p>
+    <section id="welcome" class="welcome-state">
+      <div class="welcome-icon">✦</div>
+      <span class="eyebrow">MARKDOWN IDEA ARCHIVE</span>
+      <h1>Ideias, estudos e experimentos.</h1>
+      <p>Os documentos desta página são arquivos <code>.md</code> carregados automaticamente do repositório.</p>
+    </section>
+
+    <article id="article" class="article hidden">
+      <header class="article-header">
+        <div class="article-header-copy">
+          <span id="article-status" class="status-badge"></span>
+          <h1 id="article-title"></h1>
+          <div id="article-tags" class="article-tags"></div>
         </div>
-    </main>
+        <a id="raw-link" class="raw-link" href="#" target="_blank" rel="noreferrer">ver .md ↗</a>
+      </header>
+      <div id="markdown" class="markdown-body"></div>
+    </article>
+
+    <section id="error-state" class="error-state hidden">
+      <h2>Não foi possível carregar as ideias</h2>
+      <p id="error-message"></p>
+    </section>
+  </main>
+
+  <script type="py" src="./assets/py/app.py"></script>
 </body>
 </html>

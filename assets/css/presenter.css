@@ -1,0 +1,179 @@
+/* Complementos mínimos para apresentar Markdown sem alterar a identidade do site. */
+#center {
+    margin-left: 250px;
+    margin-top: 0;
+    min-height: 100vh;
+    height: auto;
+    padding: 48px 7vw 80px;
+    color: #eee;
+}
+
+#idea-filters {
+    padding: 0 20px 12px;
+}
+
+#search {
+    width: 100%;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    padding: 8px 10px;
+    outline: none;
+}
+
+.idea-item.active {
+    background: rgba(0, 0, 0, .08);
+}
+
+.idea-status {
+    margin-top: 5px;
+    font-size: 11px !important;
+    opacity: .72;
+}
+
+.idea-tags {
+    margin-top: 3px;
+    font-size: 10px !important;
+    font-weight: normal;
+    text-transform: none;
+    opacity: .6;
+}
+
+.idea-empty {
+    cursor: default !important;
+    opacity: .6;
+}
+
+.markdown-document {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.idea-header {
+    padding-bottom: 18px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(255,255,255,.18);
+}
+
+.idea-header h1 {
+    margin-top: 0;
+}
+
+.idea-meta {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.status {
+    font-size: 12px;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,.3);
+    padding: 4px 8px;
+    border-radius: 3px;
+}
+
+.tag {
+    font-size: 12px;
+    opacity: .75;
+    margin-right: 7px;
+}
+
+.markdown-body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4 {
+    margin-top: 1.5em;
+    margin-bottom: .65em;
+}
+
+.markdown-body a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.markdown-body img {
+    max-width: 100%;
+}
+
+.markdown-body pre,
+.markdown-body code {
+    font-family: Consolas, Monaco, monospace;
+}
+
+.markdown-body pre {
+    padding: 14px;
+    overflow-x: auto;
+    background: #222;
+    border: 1px solid #444;
+    border-radius: 4px;
+    color: #eee;
+}
+
+.markdown-body code {
+    background: rgba(0,0,0,.25);
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.markdown-body pre code {
+    background: transparent;
+    padding: 0;
+}
+
+.markdown-body blockquote {
+    border-left: 4px solid #777;
+    padding-left: 16px;
+    color: #ccc;
+}
+
+.markdown-body table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.markdown-body th,
+.markdown-body td {
+    border: 1px solid #666;
+    padding: 8px;
+}
+
+#empty-state {
+    max-width: 900px;
+    margin: 80px auto;
+}
+
+@media (max-width: 760px) {
+    #sidebarMenu {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    #profile-img {
+        width: 120px;
+    }
+
+    .scrollbar {
+        float: none;
+        width: calc(100% - 30px);
+        margin-left: 15px;
+        height: auto;
+        max-height: 320px;
+    }
+
+    #side-bar-ul {
+        height: auto;
+    }
+
+    #center {
+        margin-left: 0;
+        padding: 30px 20px 60px;
+    }
+}

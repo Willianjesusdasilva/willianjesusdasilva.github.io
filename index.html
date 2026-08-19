@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Willian Jesus da Silva</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/minimal.css">
+    <link rel="stylesheet" href="assets/css/presenter.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+    <script defer src="assets/js/app.js"></script>
+</head>
+<body>
+    <div id="sidebarMenu">
+        <div class="sidebarMenuInner" id="side-bar">
+            <div class="profile-loading">Carregando...</div>
+        </div>
+
+        <hr class="rounded">
+
+        <div id="idea-filters">
+            <input id="search" type="search" placeholder="Buscar..." autocomplete="off">
+        </div>
+
+        <div class="scrollbar" id="side-bar-ul">
+            <ul class="sidebarMenuInner" id="list-side-bar"></ul>
+        </div>
+    </div>
+
+    <main id="center" class="main center">
+        <div id="empty-state">
+            <h2>Ideias</h2>
+            <p>Selecione uma ideia no menu.</p>
+        </div>
+    </main>
+</body>
+</html>
